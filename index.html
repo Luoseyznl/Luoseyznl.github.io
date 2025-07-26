@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>个人主页 - Wei Ge</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      line-height: 1.7;
+      color: #333;
+      background: linear-gradient(to right, #fdfbfb, #ebedee);
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      transition: background 0.3s ease;
+    }
+    h1 {
+      color: #0d47a1;
+      font-size: 2.2rem;
+      margin-bottom: 0.2rem;
+    }
+    h2 {
+      color: #0056b3;
+      border-left: 4px solid #0056b3;
+      padding-left: 0.5rem;
+      margin-top: 2rem;
+    }
+    a {
+      color: #d6336c;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    .tech-skill {
+      background: #e3f2fd;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      margin: 0.4rem 0;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section {
+      margin-top: 1.5rem;
+    }
+    .highlight {
+      color: #1a237e;
+      font-weight: bold;
+    }
+    .hover-fade {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-fade:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .experience-block, .project-block {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .project-block ul li {
+      margin-bottom: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="fade-in">你好，我是 Wei Ge 😀</h1>
+  <p class="fade-in">中南大学 19 级自动化本科，23 年硕士（控制科学与工程）。</p>
+  <p class="fade-in">Email: <a href="mailto:geweiyznl@163.com">geweiyznl@163.com</a></p>
+  <p class="fade-in">Phone: 133-7525-3562</p>
+
+  <h2 class="fade-in">💼 实习经历</h2>
+  <div class="experience-block fade-in">
+    <p><strong>北京航迹科技有限公司（滴滴）</strong> — 技术/后端研发实习生<br />2025.05 – 2025.07</p>
+    <ul>
+      <li>参与仿真平台团队，开发与维护基于 Apache Airflow 的自动化流程，集成 Orion、Kafka、Hive 等平台，实现自动化 CI/CD 流程。</li>
+      <li>设计并实现确定性检查工具：浮点求和工具、配置读取器、TBB 并发管理器。</li>
+      <li>通过插桩、vgraph、二分工具定位仿真稳定性问题；优化 routing 模块数据检查性能，提升约 80%。</li>
+    </ul>
+  </div>
+
+  <h2 class="fade-in">🏠 个人项目</h2>
+  <div class="project-block fade-in">
+    <p><strong class="hover-fade">ChatroomServer 聊天服务器项目</strong></p>
+    <ul>
+      <li>基于 C++ 实现了两种不同架构的聊天室服务器，支持多用户在线聊天、聊天室创建与加入、消息发送与接收等功能。</li>
+      <li>使用路由表将 HTTP 请求分发到对应的处理函数，支持 RESTful HTTP API。</li>
+      <li>集成 sqlite3 与 JSON 库源码，实现高效本地存储与解析。</li>
+      <li>用户行为（用户登录、创建房间、发送消息等）异步写入 Kafka topic 供分析监控。</li>
+    </ul>
+  </div>
+
+  <h2 class="fade-in">🏆 竞赛与奖项</h2>
+  <ul class="fade-in">
+    <li>2024 华为杯数学建模竞赛 国家级二等奖（队长）</li>
+    <li>2023 华为杯数学建模竞赛 国家级三等奖</li>
+    <li>2023 全国大学生英语竞赛 国家级三等奖</li>
+    <li>2023 & 2024 学业一等奖学金</li>
+  </ul>
+
+  <h2 class="fade-in">🛠️ 技术栈</h2>
+  <p class="tech-skill fade-in">
+    <span><strong>C++, Python</strong></span>
+    <span>熟练</span>
+  </p>
+  <p class="tech-skill fade-in">
+    <span><strong>ROS2, Airflow, Kafka, MySQL, Docker, Git, Ubuntu</strong></span>
+    <span>掌握</span>
+  </p>
+
+  <h2 class="fade-in">🧭 自我评价</h2>
+  <p class="fade-in">有理想、有文化、有秩序。</p>
+</body>
+</html>
