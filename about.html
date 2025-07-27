@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>个人主页 - Wei Ge</title>
+  <title>个人主页 - Ge Wei</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -86,49 +86,59 @@
   </style>
 </head>
 <body>
-  <h1 class="fade-in">你好，我是 Wei Ge</h1>
+  <h1 class="fade-in">你好，我是 Ge Wei</h1>
   <p class="fade-in">中南大学 19 级自动化本科，23 级控制科学与工程硕士。</p>
   <p class="fade-in">Email: <a href="mailto:geweiyznl@163.com">geweiyznl@163.com</a></p>
   <p class="fade-in">Phone: 133-7525-3562</p>
 
   <h2 class="fade-in">💼 实习经历</h2>
   <div class="experience-block fade-in">
-    <p><strong>北京航迹科技有限公司（滴滴）</strong> — 技术/后端研发实习生<br />2025.05 – 2025.07</p>
+    <p><strong>北京航迹科技有限公司（滴滴）</strong> 北京<br />2025.05 -- 2025.07</p>
+    <div style="font-weight:600;">Simulation CN-Simulator Foundation / 技术&后端研发实习生</div>
     <ul>
-      <li>参与仿真平台团队，开发与维护基于 Apache Airflow 的自动化流程，集成 Orion、Kafka、Hive 等平台，实现自动化 CI/CD 流程。</li>
-      <li>设计并实现确定性检查工具：浮点求和工具、配置读取器、TBB 并发管理器。</li>
-      <li>通过插桩、vgraph、二分工具定位仿真稳定性问题；优化 routing 模块数据检查性能，提升约 80%。</li>
+      <li>主要负责自动驾驶仿真平台确定性检查相关的开发与优化工作，通过 Python、C++、SQL 等语言与 Bazel 编译器开发基于 <b>Apache Airflow</b> 的确定性检查自动化工作流程，与 <b>Orion</b>、<b>Kafka</b>、<b>Hive</b> 等数据平台集成，及时撰写开发、测试、监控文档，确保高效稳定地执行确定性检查。</li>
+      <li>持续维护确定性检查 Airflow，协助线上算法团队实现流式故障消息注入需求。基于确定性检查需求设计并实现浮点数确定性求和（Khan求和, 固定放缩求和）、并发及线程上下文管理（tbb_manager）、配置文件读取（config_reader）等工具，增强平台功能。</li>
+      <li>参与确定性检查的<b>性能优化</b>与<b>问题定位</b>工作，分析并优化 Airflow 任务执行时间，提升平台稳定性和效率。通过对 vgraph 文件分析、插桩和二分定位等工具，协助算法团队定位 sensing 模块确定性问题；通过监控 CPU 和内存，分析并优化检查时间，效率提升约 80%。</li>
     </ul>
   </div>
 
-  <h2 class="fade-in">🏠 个人项目</h2>
+  <h2 class="fade-in">🧑‍💻 项目经历</h2>
   <div class="project-block fade-in">
-    <p><strong class="hover-fade">ChatroomServer 聊天服务器项目</strong></p>
+    <p><strong class="hover-fade">ChatroomServer 聊天服务器</strong> <span style="float:right;">2025.02 -- 2025.07</span></p>
+    <div style="font-weight:600;">C++, SQL, Kafka, epoll, Nginx, 线程池, 单Reactor单线程模型</div>
     <ul>
-      <li>基于 C++ 实现了两种不同架构的聊天室服务器，支持多用户在线聊天、聊天室创建与加入、消息发送与接收等功能。</li>
-      <li>使用路由表将 HTTP 请求分发到对应的处理函数，支持 RESTful HTTP API。</li>
-      <li>集成 sqlite3 与 JSON 库源码，实现高效本地存储与解析。</li>
-      <li>用户行为（用户登录、创建房间、发送消息等）异步写入 Kafka topic 供分析监控。</li>
+      <li>实现了两种不同架构的聊天室服务器，用 C++ 实现，支持多用户在线聊天、聊天室创建与加入、消息发送与接收等功能。</li>
+      <li>架构一：基于传统的<b>并发模型</b>设计，使用可窃取任务的线程池实现高并发处理，支持多客户端连接与消息收发。通过<b>路由分发</b>器实现消息处理，支持 <b>RESTful API</b> 接口，使用 Nginx 作为反向代理服务器。</li>
+      <li>架构二：基于 <b>epoll + Reactor</b> 模型设计高性能异步 IO 聊天服务器，避免锁竞争与线程切换带来的性能损失。通过 EventLoop、Channel、Epoller 等核心组件实现高效事件处理，支持多客户端并发连接与消息收发。使用 <b>Kafka</b> 消息队列异步记录用户行为。</li>
+      <li>编译时通过 <b>AddressSanitizer</b> 确保代码健壮性和稳定性。CMake 构建，DatabaseManager 实现 SQLite 线程安全操作。Logger 类支持多级日志输出与轮转。通过 postman, Flame Graph, wrk 等工具测试，架构二最大延迟减少约 <b>90%</b>。</li>
     </ul>
+  </div>
+  <div class="project-block fade-in">
+    <p><strong class="hover-fade">AutonomousDrivingPlanner 自动驾驶规划模块</strong> <span style="float:right;">2025.02 -- 2025.07</span></p>
+    <div style="font-weight:600;">C++, Python, ROS2, YAML, EM planner, 局部路径规划, 模块化设计</div>
+    <ul>
+      <li>基于 <b>ROS2</b> 实现的简易自动驾驶仿真器，完成局部路径规划模块（EM Planner）的集成与定制开发，实现参考线优化、障碍物回避、速度曲线生成等功能。</li>
+      <li>模块化设计，自定义 msg 与 srv 类型，支持规控地图生成、全局路径生成、参考线生成、局部路径规划等模块解耦通信。</li>
+      <li>采用 <b>URDF / Xacro</b> 构建车辆模型，在 <b>RViz2</b> 可视化轨迹、参考线、地图等信息，配合 <b>TF</b> 广播与监听实现车辆动态显示与调试。</li>
+      <li>基于笛卡尔坐标系和 <b>Frenet 坐标系</b>生成车辆位置投影与参考线，基于 <b>EM Planner</b> 生成局部路径。</li>
+    </ul>
+  </div>
+
+  <h2 class="fade-in">🛠️ 技能清单</h2>
+  <div class="fade-in" style="margin-bottom:1.2em;">
+    <div><b>掌握</b>：C++，Python，Linux</div>
+    <div><b>了解</b>：ROS2，TCP/UDP，Kafka，MySQL，Hive</div>
+    <div><b>了解</b>：Docker，Git，Bazel，CMake，Markdown</div>
   </div>
 
   <h2 class="fade-in">🏆 其他</h2>
   <ul class="fade-in">
-    <li>获得过 全国大学生英语竞赛三等奖、2023 & 2024 华为杯数学建模竞赛二等奖（队长）& 三等奖、2023 & 2024 学业一等奖学金</li>
-    <li>用tbb写过一个多线程下载器</li>
+    <li><b>竞赛奖项</b>：中南大学学业一等奖学金（2023、2024）、全国大学生英语竞赛（研究生组三等奖）、华为杯全国大学生数学建模竞赛（研究生组三等奖、二等奖/队长）、全国大学生创新创业大赛（本科生组三等奖/最佳现场展示奖）。</li>
+    <li><b>项目实践</b>：独立开发过一些小型 Qt Demo 项目，比如图片阅读器、Airsim 多无人机实时状态曲线图。基于 tbb、gflags、glog、gtest 等三方库，开发了一个并发 HTTP 下载器，提升了并发处理能力与代码工程化水平。</li>
+    <li><b>论文发表</b>：发表过一篇控制领域的 SCI 论文，影响因子 3.7，基于重置积分 PID 改进了多智能体系统一致性控制。</li>
   </ul>
 
-  <h2 class="fade-in">🛠️ 技术栈</h2>
-  <p class="tech-skill fade-in">
-    <span><strong>C++, Python</strong></span>
-    <span>熟练</span>
-  </p>
-  <p class="tech-skill fade-in">
-    <span><strong>ROS2, Airflow, Kafka, MySQL, Docker, Git, Ubuntu</strong></span>
-    <span>掌握</span>
-  </p>
-
   <h2 class="fade-in">🧭 自我评价</h2>
-  <p class="fade-in">有理想、有文化、有秩序。</p>
+  <p class="fade-in">有理想、有道德、有文化、有秩序。</p>
 </body>
 </html>
