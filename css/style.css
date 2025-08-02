@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #f5f7fa 60%, #ffe082 100%);
+  color: #212121;
+  font-family: 'ComicNeue', 'ZCOOL KuaiLe', 'Arial', sans-serif;
+}
+.header {
+  background: url('../CSU.jpg') center bottom no-repeat;
+  background-size: cover;
+  background-color: #222;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+.avatar {
+  width: 200px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px dashed #ffe082;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.12);
+  margin-bottom: 16px;
+  margin-top: 24px;
+  object-fit: cover;
+  background: #fff;
+  transition: transform 0.2s;
+}
+.avatar:hover {
+  transform: rotate(-8deg) scale(1.05);
+}
+.name {
+  font-size: 3.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 12px #d6336c;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+.desc {
+  font-size: 1.2rem;
+  color: #ffe082;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 6px #d6336c;
+}
+.btn-group {
+  margin-top: 12px;
+  margin-bottom: 28px;
+}
+.btn {
+  display: inline-block;
+  margin: 0 12px;
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 24px;
+  border: none;
+  background: #d6336c;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 12px #ffe082;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #ff9800;
+  color: #222;
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 4px 24px #d6336c;
+}
+.main {
+  max-width: 700px;
+  margin: 40px auto 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.10);
+  padding: 36px;
+  text-align: center;
+}
+.joke {
+  color: #d6336c;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  .main { padding: 16px; }
+  .header { min-height: 40vh; }
+  .btn { padding: 10px 18px; font-size: 1rem; }
+}

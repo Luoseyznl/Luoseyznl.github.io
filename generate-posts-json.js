@@ -1,12 +1,12 @@
 // 用于扫描 posts 目录下所有 markdown 文件，提取 front matter 并生成 posts.json
 // 用法：node generate-posts-json.js
 
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
+const fs = require("fs");
+const path = require("path");
+const yaml = require("js-yaml");
 
-const postsDir = path.join(__dirname, 'posts');
-const output = path.join(__dirname, 'posts.json');
+const postsDir = path.join(__dirname, "posts");
+const output = path.join(__dirname, "posts.json");
 
 function extractFrontMatter(md) {
   const match = md.match(/^---([\s\S]+?)---/);
@@ -19,36 +19,44 @@ function extractFrontMatter(md) {
 }
 
 function getSummary(content) {
-  return content.replace(/[#>*\-\[\]!`\n]/g, '').slice(0, 150) + (content.length > 150 ? '...' : '');
+  // 取首段，不含标题
+  const firstParagraph = content.split(/\n\s*\n/)[1] || content;
+  return (
+    firstParagraph.replace(/[#>*\-\[\]!`\n]/g, "").slice(0, 150) +
+    (firstParagraph.length > 150 ? "..." : "")
+  );
 }
 
 function main() {
   if (!fs.existsSync(postsDir)) {
-    console.error('posts 目录不存在');
+    console.error("posts 目录不存在");
     process.exit(1);
   }
-  const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'));
+  const files = fs.readdirSync(postsDir).filter((f) => f.endsWith(".md"));
   const posts = [];
   for (const file of files) {
-    const md = fs.readFileSync(path.join(postsDir, file), 'utf-8');
+    const md = fs.readFileSync(path.join(postsDir, file), "utf-8");
     const { meta, content } = extractFrontMatter(md);
     if (!meta.title || !meta.date) {
       console.warn(`跳过 ${file}：缺少标题或日期`);
       continue; // 必须有标题和日期
     }
     posts.push({
-      file: 'posts/' + file,
+      file: "posts/" + file,
       title: meta.title,
       date: meta.date,
-      category: meta.category || '',
+      category: meta.category || "",
       tags: meta.tags || [],
-      summary: getSummary(content)
+      summary: getSummary(content),
+      cover: meta.cover || "", // 新增：封面图
+      author: meta.author || "葛蔚", // 新增：作者
+      readingTime: Math.ceil(content.length / 500) + "分钟", // 简单估算阅读时长
     });
   }
   // 按日期从新到旧排序
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-  fs.writeFileSync(output, JSON.stringify(posts, null, 2), 'utf-8');
-  console.log('已生成 posts.json');
+  fs.writeFileSync(output, JSON.stringify(posts, null, 2), "utf-8");
+  console.log("已生成 posts.json");
 }
 
 main();
