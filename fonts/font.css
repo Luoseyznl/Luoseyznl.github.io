@@ -3,6 +3,11 @@
   src: url('ComicNeue-Regular.ttf') format('truetype');
 }
 @font-face {
+    font-family: 'slideyouran';
+    src: url('slideyouran.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'ZCOOL KuaiLe';
   src: url('ZCOOLKuaiLe-Regular.ttf') format('truetype');
 }
