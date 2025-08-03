@@ -1,111 +1,127 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>笔记内容</title>
-        <link rel="stylesheet" href="css/blog.css" />
-        <link rel="stylesheet" href="fonts/font.css" />
-        <link rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/atom-one-dark.min.css">
-        <script
-            src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <script
-            src="https://unpkg.com/highlight.js@11.9.0/dist/highlight.min.js"></script>
-        <script id="MathJax-script" async
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    </head>
-    <body>
-        <nav class="nav">
-            <a href="index.html">首页</a>
-            <a href="blog.html">博客</a>
-            <a href="about.html">关于我</a>
-        </nav>
-        <div class="container">
-            <div id="post-container">
-                <div id="post-header">
-                    <h1 id="post-title">加载中...</h1>
-                    <div id="post-meta">
-                        <span id="post-date"></span>
-                        <span id="post-category"></span>
-                        <span id="post-tags"></span>
-                        <span id="post-reading-time"></span>
-                    </div>
-                </div>
-                <div id="markdown-content" class="markdown-body">加载中...</div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>笔记内容</title>
+    <link rel="stylesheet" href="css/blog.css" />
+    <link rel="stylesheet" href="fonts/font.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/atom-one-dark.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="index.html">首页</a>
+      <a href="blog.html">博客</a>
+      <a href="about.html">关于我</a>
+    </nav>
+    <div class="container">
+      <div id="post-container">
+        <div id="post-header">
+          <h1 id="post-title">加载中...</h1>
+          <div id="post-meta">
+            <span id="post-date"></span>
+            <span id="post-category"></span>
+            <span id="post-tags"></span>
+            <span id="post-reading-time"></span>
+          </div>
         </div>
-        <script>
-    // 从URL获取文件路径
-    const url = new URL(window.location.href);
-    const filePath = url.searchParams.get('file') || '';
-    
-    // 加载文章内容
-    async function loadPost() {
-      try {
-        // 加载文章元数据
-        const postsRes = await fetch('./posts.json'); // 使用相对路径
-        const posts = await postsRes.json();
-        const post = posts.find(p => p.file === filePath);
-        
-        if (!post) {
-          document.getElementById('markdown-content').innerHTML = '<p>文章不存在</p>';
-          return;
-        }
-        
-        // 更新页面标题和元数据
-        document.title = post.title + " - 葛蔚的学习笔记";
-        document.getElementById('post-title').textContent = post.title;
-        document.getElementById('post-date').textContent = new Date(post.date).toLocaleDateString('zh-CN');
-        document.getElementById('post-category').textContent = post.category ? `分类：${post.category}` : '';
-        document.getElementById('post-tags').textContent = post.tags && post.tags.length ? `标签：${post.tags.join('、')}` : '';
-        document.getElementById('post-reading-time').textContent = `阅读时间：${post.readingTime}`;
-        
-        // 加载Markdown内容
-        console.log('尝试加载文件:', filePath);
-        const mdRes = await fetch(filePath);
+        <div id="markdown-content" class="markdown-body">加载中...</div>
+      </div>
+    </div>
+    <script>
+      // 从URL获取文件路径
+      const url = new URL(window.location.href);
+      const filePath = url.searchParams.get("file") || "";
 
-        if (!mdRes.ok) {
-          throw new Error(`无法加载文件: ${mdRes.status}`);
-        }
-        
-        let mdContent = await mdRes.text();
-        console.log('获取内容长度:', mdContent.length);
-        
-        // 移除Front Matter
-        mdContent = mdContent.replace(/^---[\s\S]+?---/, '').trim();
-        
-        // 渲染Markdown
-        document.getElementById('markdown-content').innerHTML = marked.parse(mdContent);
-        
-        // 高亮代码
-        document.querySelectorAll('pre code').forEach(block => {
-          hljs.highlightElement(block);
-        });
-        
-        // 渲染数学公式
-        if (window.MathJax) {
-          MathJax.typeset();
-        }
+      // 加载文章内容
+      async function loadPost() {
+        try {
+          // 加载文章元数据
+          const postsRes = await fetch("./posts.json"); // 使用相对路径
+          const posts = await postsRes.json();
+          const post = posts.find((p) => p.file === filePath);
 
-        // 自动修正图片路径
-        document.querySelectorAll('#markdown-content img').forEach(img => {
-        // 只修正没有路径的图片（即 src 不含 '/'）
-        if (img.src && !img.src.includes('/posts/') && !img.src.match(/^https?:\/\//)) {
-          // 获取原始 src 属性（相对路径）
-          const rawSrc = img.getAttribute('src');
-          if (rawSrc && !rawSrc.includes('/') && !rawSrc.startsWith('posts/')) {
-            img.setAttribute('src', 'posts/' + rawSrc);
+          if (!post) {
+            document.getElementById("markdown-content").innerHTML =
+              "<p>文章不存在</p>";
+            return;
+          }
+
+          // 更新页面标题和元数据
+          document.title = post.title + " - 葛蔚的学习笔记";
+          document.getElementById("post-title").textContent = post.title;
+          document.getElementById("post-date").textContent = new Date(
+            post.date
+          ).toLocaleDateString("zh-CN");
+          document.getElementById("post-category").textContent = post.category
+            ? `分类：${post.category}`
+            : "";
+          document.getElementById("post-tags").textContent =
+            post.tags && post.tags.length
+              ? `标签：${post.tags.join("、")}`
+              : "";
+          document.getElementById(
+            "post-reading-time"
+          ).textContent = `阅读时间：${post.readingTime}`;
+
+          // 加载Markdown内容
+          console.log("尝试加载文件:", filePath);
+          const mdRes = await fetch(filePath);
+
+          if (!mdRes.ok) {
+            throw new Error(`无法加载文件: ${mdRes.status}`);
+          }
+
+          let mdContent = await mdRes.text();
+          console.log("获取内容长度:", mdContent.length);
+
+          // 移除Front Matter
+          mdContent = mdContent.replace(/^---[\s\S]+?---/, "").trim();
+
+          // 渲染Markdown
+          document.getElementById("markdown-content").innerHTML =
+            marked.parse(mdContent);
+
+          // 高亮代码
+          document.querySelectorAll("pre code").forEach((block) => {
+            hljs.highlightElement(block);
+          });
+
+          // 渲染数学公式
+          if (window.MathJax) {
+            MathJax.typeset();
+          }
+
+          // 自动修正图片路径
+          document.querySelectorAll("#markdown-content img").forEach((img) => {
+            const rawSrc = img.getAttribute("src");
+            // 只处理不是绝对路径、不是以 posts/ 开头、不是以 http(s) 开头的图片
+            if (
+              rawSrc &&
+              !rawSrc.startsWith("posts/") &&
+              !rawSrc.startsWith("/") &&
+              !rawSrc.match(/^https?:\/\//)
+            ) {
+              img.setAttribute("src", "posts/" + rawSrc);
+            }
+          });
+        } catch (error) {
+          console.error("加载文章失败:", error);
+          document.getElementById(
+            "markdown-content"
+          ).innerHTML = `<p>加载文章失败: ${error.message}</p>`;
         }
-        }
-        });
-      } catch (error) {
-        console.error('加载文章失败:', error);
-        document.getElementById('markdown-content').innerHTML = `<p>加载文章失败: ${error.message}</p>`;
       }
-    }
-    
-    loadPost();
-  </script>
-    </body>
+
+      loadPost();
+    </script>
+  </body>
 </html>
