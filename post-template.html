@@ -65,7 +65,7 @@
         
         // 加载Markdown内容
         console.log('尝试加载文件:', filePath);
-        const mdRes = await fetch('./' + filePath); // 添加 ./ 确保相对路径正确
+        const mdRes = await fetch(filePath);
         
         if (!mdRes.ok) {
           throw new Error(`无法加载文件: ${mdRes.status}`);
