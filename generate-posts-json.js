@@ -19,12 +19,35 @@ function extractFrontMatter(md) {
 }
 
 function getSummary(content) {
-  // 取首段，不含标题
-  const firstParagraph = content.split(/\n\s*\n/)[1] || content;
-  return (
-    firstParagraph.replace(/[#>*\-\[\]!`\n]/g, "").slice(0, 150) +
-    (firstParagraph.length > 150 ? "..." : "")
-  );
+  // 寻找非标题、非目录的第一段有意义文本
+  const paragraphs = content.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+  
+  // 跳过标题、分隔符和目录
+  let firstParagraph = '';
+  for (const p of paragraphs) {
+    const trimmed = p.trim();
+    if (!trimmed.startsWith('#') && 
+        !trimmed.startsWith('---') && 
+        !trimmed.startsWith('- [') &&
+        !trimmed.match(/^目录|^Contents|^Table of contents/i)) {
+      firstParagraph = trimmed;
+      break;
+    }
+  }
+  
+  // 如果没找到合适段落，取第一段非空内容
+  if (!firstParagraph && paragraphs.length > 0) {
+    firstParagraph = paragraphs[0];
+  }
+  
+  // 移除 Markdown 标记和数学公式
+  let summary = firstParagraph
+    .replace(/[#>*\-\[\]!`\n]/g, '')
+    .replace(/\$\$(.*?)\$\$/g, '')
+    .replace(/\$(.*?)\$/g, '')
+    .trim();
+    
+  return summary.length > 150 ? summary.slice(0, 150) + '...' : summary;
 }
 
 function main() {

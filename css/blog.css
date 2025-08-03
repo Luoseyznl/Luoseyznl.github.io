@@ -91,64 +91,170 @@ body {
 .read-more:hover {
   text-decoration: underline;
 }
+
+/* 更新的Markdown渲染样式 */
 .markdown-body {
-  font-size: 1.08rem;
-  line-height: 1.8;
-  color: #222;
-  background: #fffbe7;
+  font-family: 'ComicNeue', 'ZCOOL KuaiLe', 'Arial', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: #333;
+  background: #fff9f0;
   border-radius: 12px;
-  padding: 32px 24px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-  margin-bottom: 32px;
+  padding: 28px 32px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  margin: 20px 0;
 }
-.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+
+/* 标题样式增加活泼感 */
+.markdown-body h1 {
+  font-size: 2.2rem;
   color: #d6336c;
+  border-bottom: 3px solid #ffe082;
+  padding-bottom: 8px;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+.markdown-body h2 {
+  font-size: 1.8rem;
+  color: #e67700;
+  border-left: 5px solid #d6336c;
+  padding-left: 12px;
   margin-top: 1.6em;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.8em;
 }
-.markdown-body h1 { font-size: 2rem; }
-.markdown-body h2 { font-size: 1.6rem; }
-.markdown-body h3 { font-size: 1.3rem; }
-.markdown-body p { margin: 1em 0; }
+
+.markdown-body h3 {
+  font-size: 1.5rem;
+  color: #1098ad;
+  margin-top: 1.4em;
+  margin-bottom: 0.7em;
+}
+
+/* 段落样式 */
+.markdown-body p {
+  margin: 1.2em 0;
+  font-size: 1.15rem;
+}
+
+/* 表格样式 */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.5em 0;
+  box-shadow: 0 0 12px rgba(0,0,0,0.05);
+}
+
+.markdown-body th {
+  background: #e67700;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.markdown-body td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body tr:nth-child(even) {
+  background-color: #fff5e6;
+}
+
+/* 代码块样式 */
+.markdown-body pre {
+  background: #2d333b;
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
 .markdown-body code {
-  background: #ffe082;
-  color: #d6336c;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.95em;
+  background: #ffe8cc;
+  color: #e67700;
   padding: 2px 6px;
   border-radius: 4px;
-  font-size: 0.98em;
 }
-.markdown-body pre {
-  background: #222;
-  color: #ffe082;
-  padding: 16px;
-  border-radius: 8px;
-  overflow-x: auto;
-  font-size: 0.98em;
+
+.markdown-body pre code {
+  background: transparent;
+  color: #e6e6e6;
+  padding: 0;
 }
+
+/* 引用样式 */
 .markdown-body blockquote {
-  border-left: 4px solid #d6336c;
-  background: #fff0f6;
-  color: #888;
-  margin: 1em 0;
-  padding: 0.8em 1em;
+  border-left: 4px solid #ffe082;
+  background: #fff9db;
+  margin: 1.5em 0;
+  padding: 12px 20px;
   border-radius: 6px;
+  font-style: italic;
+  color: #666;
 }
+
+/* 列表样式 */
 .markdown-body ul, .markdown-body ol {
-  margin: 1em 0 1em 2em;
+  margin: 1.2em 0 1.2em 1.5em;
 }
-.markdown-body table {
-  border-collapse: collapse;
-  margin: 1em auto;
-  width: 100%;
-  background: #fff;
+
+.markdown-body li {
+  margin: 0.5em 0;
 }
-.markdown-body th, .markdown-body td {
-  border: 1px solid #ffe082;
-  padding: 8px 12px;
+
+/* 分隔线样式 */
+.markdown-body hr {
+  border: none;
+  height: 3px;
+  background: linear-gradient(to right, #ffe082, #d6336c, #ffe082);
+  margin: 2em 0;
 }
+
+/* 图片样式 */
+.markdown-body img {
+  max-width: 100%;
+  display: block;
+  margin: 1.5em auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* 文章头部样式 */
+#post-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+#post-title {
+  font-size: 2.4rem;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+#post-meta {
+  color: #777;
+  font-size: 1rem;
+}
+
+#post-meta span {
+  margin: 0 8px;
+}
+
+/* 媒体查询 */
 @media (max-width: 600px) {
   .container { padding: 0 4px 24px 4px; }
   .post { padding: 14px 6px 10px 6px; }
   .blog-header { padding: 18px 0 6px 0; }
   .nav { gap: 12px; font-size: 0.98rem; }
+  .markdown-body { padding: 16px 12px; }
+  .markdown-body h1 { font-size: 1.8rem; }
+  .markdown-body h2 { font-size: 1.5rem; }
+  .markdown-body h3 { font-size: 1.3rem; }
 }

@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>葛蔚的学习笔记</title>
-  <link rel="stylesheet" href="css/blog.css" />
-  <link rel="stylesheet" href="fonts/font.css" />
-</head>
-<body>
-  <div class="blog-header">
-    <div class="blog-title">葛蔚的学习笔记</div>
-    <div class="blog-desc"></div>
-  </div>
-  <nav class="nav">
-    <a href="index.html">首页</a>
-    <a href="blog.html">博客</a>
-    <a href="about.html">关于我</a>
-  </nav>
-  <div class="container">
-    <a id="content"></a>
-    <div id="posts-list"></div>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-    <script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>葛蔚的学习笔记</title>
+        <link rel="stylesheet" href="css/blog.css" />
+        <link rel="stylesheet" href="fonts/font.css" />
+    </head>
+    <body>
+        <div class="blog-header">
+            <div class="blog-title">葛蔚的学习笔记</div>
+            <div class="blog-desc"></div>
+        </div>
+        <nav class="nav">
+            <a href="index.html">首页</a>
+            <a href="blog.html">博客</a>
+            <a href="about.html">关于我</a>
+        </nav>
+        <div class="container">
+            <a id="content"></a>
+            <div id="posts-list"></div>
+            <script
+                src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+            <script>
       // 现在直接从 posts.json 读取文章列表
       async function loadPosts() {
         const container = document.getElementById('posts-list');
@@ -40,14 +42,14 @@
             const category = post.category || '';
             const tags = Array.isArray(post.tags) ? post.tags.join('、') : (post.tags || '');
             html += `
-              <div class="post">
-                <a class="post-title" href="${post.file.replace('.md', '.html')}">${post.title || '未命名笔记'}</a>
+            <div class="post">
+                <a class="post-title" href="post-template.html?file=${encodeURIComponent(post.file)}">${post.title || '未命名笔记'}</a>
                 <div class="post-meta">${date}${category ? ' · 分类：' + category : ''}${tags ? ' · 标签：' + tags : ''}</div>
                 <div class="post-summary">
-                  ${post.summary}
-                  <a class="read-more" href="${post.file.replace('.md', '.html')}">阅读全文</a>
+                ${post.summary || '暂无摘要...'}
+                <a class="read-more" href="post-template.html?file=${encodeURIComponent(post.file)}">阅读全文</a>
                 </div>
-              </div>
+            </div>
             `;
           }
           container.innerHTML = html;
@@ -57,7 +59,7 @@
       }
       loadPosts();
     </script>
-    <!-- 更多文章... -->
-  </div>
-</body>
+            <!-- 更多文章... -->
+        </div>
+    </body>
 </html>
