@@ -11,7 +11,7 @@
         <script
             src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
         <script
-            src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/dist/highlight.min.js"></script>
+            src="https://unpkg.com/highlight.js@11.9.0/dist/highlight.min.js"></script>
         <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </head>
@@ -87,6 +87,18 @@
         if (window.MathJax) {
           MathJax.typeset();
         }
+
+        // 自动修正图片路径
+        document.querySelectorAll('#markdown-content img').forEach(img => {
+        // 只修正没有路径的图片（即 src 不含 '/'）
+        if (img.src && !img.src.includes('/posts/') && !img.src.match(/^https?:\/\//)) {
+          // 获取原始 src 属性（相对路径）
+          const rawSrc = img.getAttribute('src');
+          if (rawSrc && !rawSrc.includes('/') && !rawSrc.startsWith('posts/')) {
+            img.setAttribute('src', 'posts/' + rawSrc);
+        }
+        }
+        });
       } catch (error) {
         console.error('加载文章失败:', error);
         document.getElementById('markdown-content').innerHTML = `<p>加载文章失败: ${error.message}</p>`;
