@@ -19,7 +19,7 @@ body {
   width: 200px;
   height: 150px;
   border-radius: 50%;
-  border: 5px dashed #ffe082;
+  border: 5px solid #fff;
   box-shadow: 0 6px 32px rgba(0,0,0,0.12);
   margin-bottom: 16px;
   margin-top: 24px;
