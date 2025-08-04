@@ -111,7 +111,40 @@
 
           // 移除Front Matter
           mdContent = mdContent.replace(/^---[\s\S]+?---/, "").trim();
-          
+
+          const renderer = new marked.Renderer();
+          renderer.heading = function (text, level) {
+            // 处理 text 为对象的情况
+            if (typeof text !== "string") {
+              // 尝试用 marked.parseInline 或递归提取纯文本
+              if (text && typeof text === "object") {
+                if (text.text) {
+                  text = text.text;
+                } else if (Array.isArray(text)) {
+                  text = text
+                    .map((t) => (typeof t === "string" ? t : t.text || ""))
+                    .join("");
+                } else {
+                  text = JSON.stringify(text);
+                }
+              } else {
+                text = String(text);
+              }
+            }
+            level = Number(level);
+            if (isNaN(level) || level < 1 || level > 6) level = 1; // 防止异常
+
+            const id = text
+              .replace(/[\.]/g, "") // 去掉点
+              .replace(/\s+/g, "-") // 空格转为 -
+              .replace(/[()（）]/g, "") // 去掉括号
+              .replace(/-+/g, "-") // 连续 - 合并
+              .replace(/^-|-$/g, "") // 去掉首尾 -
+              .toLowerCase();
+            return `<h${level} id="${id}">${text}</h${level}>`;
+          };
+          marked.setOptions({ renderer });
+
           // 渲染Markdown
           document.getElementById("markdown-content").innerHTML =
             marked.parse(mdContent);
