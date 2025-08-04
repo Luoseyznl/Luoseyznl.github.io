@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>笔记内容</title>
-        <link rel="stylesheet" href="css/blog.css" />
-        <link rel="stylesheet" href="fonts/font.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/atom-one-dark.min.css" />
-        <script
-            src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-        <script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>笔记内容</title>
+    <link rel="stylesheet" href="css/blog.css" />
+    <link rel="stylesheet" href="fonts/font.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/atom-one-dark.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
       window.MathJax = {
         tex: {
           inlineMath: [
@@ -37,32 +35,32 @@
         },
       };
     </script>
-        <script
-            id="MathJax-script"
-            async
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    </head>
-    <body>
-        <nav class="nav">
-            <a href="index.html">首页</a>
-            <a href="blog.html">博客</a>
-            <a href="about.html">关于我</a>
-        </nav>
-        <div class="container">
-            <div id="post-container">
-                <div id="post-header">
-                    <h1 id="post-title">加载中...</h1>
-                    <div id="post-meta">
-                        <span id="post-date"></span>
-                        <span id="post-category"></span>
-                        <span id="post-tags"></span>
-                        <span id="post-reading-time"></span>
-                    </div>
-                </div>
-                <div id="markdown-content" class="markdown-body">加载中...</div>
-            </div>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="index.html">首页</a>
+      <a href="blog.html">博客</a>
+      <a href="about.html">关于我</a>
+    </nav>
+    <div class="container">
+      <div id="post-container">
+        <div id="post-header">
+          <h1 id="post-title">加载中...</h1>
+          <div id="post-meta">
+            <span id="post-date"></span>
+            <span id="post-category"></span>
+            <span id="post-tags"></span>
+            <span id="post-reading-time"></span>
+          </div>
         </div>
-        <script>
+        <div id="markdown-content" class="markdown-body">加载中...</div>
+      </div>
+    </div>
+    <script>
       // 从URL获取文件路径
       const url = new URL(window.location.href);
       const filePath = url.searchParams.get("file") || "";
@@ -82,7 +80,7 @@
           }
 
           // 更新页面标题和元数据
-          document.title = post.title + " - 葛蔚的学习笔记";
+          document.title = post.title + " - Will's Notes";
           document.getElementById("post-title").textContent = post.title;
           document.getElementById("post-date").textContent = new Date(
             post.date
@@ -111,6 +109,23 @@
 
           // 移除Front Matter
           mdContent = mdContent.replace(/^---[\s\S]+?---/, "").trim();
+
+          // 渲染Markdown
+          const renderer = new marked.Renderer();
+          renderer.heading = function (text, level) {
+            // 保证 text 是字符串
+            if (typeof text !== "string") text = String(text);
+            // 只保留数字、中文、字母，空格转为 -
+            const id = text
+              .replace(/[\.]/g, "") // 去掉点
+              .replace(/\s+/g, "-") // 空格转为 -
+              .replace(/[()（）]/g, "") // 去掉括号
+              .replace(/-+/g, "-") // 连续 - 合并
+              .replace(/^-|-$/g, "") // 去掉首尾 -
+              .toLowerCase();
+            return `<h${level} id="${id}">${text}</h${level}>`;
+          };
+          marked.setOptions({ renderer });
 
           // 渲染Markdown
           document.getElementById("markdown-content").innerHTML =
@@ -159,5 +174,5 @@
 
       loadPost();
     </script>
-    </body>
+  </body>
 </html>
