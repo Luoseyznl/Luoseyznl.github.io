@@ -1,5 +1,34 @@
 [
   {
+    "file": "posts/Webserver项目解读.md",
+    "title": "ChatroomServer项目解读",
+    "date": "2025-08-04T00:00:00.000Z",
+    "category": "项目解读",
+    "tags": [
+      "网络编程",
+      "并发编程"
+    ],
+    "summary": "一个经典的 C++ 网络编程项目，使用了多线程和异步 IO 技术。适合学习网络编程和并发编程的同学。",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "26分钟"
+  },
+  {
+    "file": "posts/实习项目解读.md",
+    "title": "自动驾驶仿真确定性检查代码解读",
+    "date": "2025-08-04T00:00:00.000Z",
+    "category": "项目解读",
+    "tags": [
+      "ROS",
+      "并发编程",
+      "TBB"
+    ],
+    "summary": "",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "0分钟"
+  },
+  {
     "file": "posts/强化学习.md",
     "title": "强化学习的数学原理",
     "date": "2025-08-04T00:00:00.000Z",
