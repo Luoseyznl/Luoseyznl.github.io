@@ -126,6 +126,16 @@
             MathJax.typeset();
           }
 
+          // 自动滚动到锚点
+          if (window.location.hash) {
+            const anchor = document.getElementById(
+              window.location.hash.slice(1)
+            );
+            if (anchor) {
+              anchor.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+
           // 自动修正图片路径
           document.querySelectorAll("#markdown-content img").forEach((img) => {
             const rawSrc = img.getAttribute("src");
