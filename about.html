@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>个人主页 - Will Ge</title>
-        <link rel="stylesheet" href="fonts/font.css" />
-        <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人主页 - Will Ge</title>
+    <link rel="stylesheet" href="fonts/font.css" />
+    <style>
       body {
         font-family: "ComicNeue", "ZCOOL KuaiLe", -apple-system,
           BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -148,119 +148,120 @@
         }
       }
     </style>
-    </head>
-    <body>
-        <h1 class="fade-in">你好，我是 Will Ge</h1>
-        <p class="fade-in"><b>教育背景：</b></p>
-        <div class="fade-in">
-            <ul>
-                <li><b>中南大学</b> / 控制科学与工程 / 硕士（2023 -- 2026）</li>
-                <li><b>中南大学</b> / 自动化 / 本科（2019 -- 2023）</li>
-            </ul>
-        </div>
+  </head>
+  <body>
+    <h1 class="fade-in">你好，我是 Will Ge</h1>
+    <p class="fade-in"><b>教育背景：</b></p>
+    <div class="fade-in">
+      <ul>
+        <li><b>中南大学</b> / 控制科学与工程 / 硕士（2023 -- 2026）</li>
+        <li><b>中南大学</b> / 自动化 / 本科（2019 -- 2023）</li>
+      </ul>
+    </div>
 
-        <h2 class="fade-in">💼 实习项目</h2>
-        <div class="experience-block fade-in">
-            <strong>滴滴 自动驾驶技术团队（voyager） 北京</strong>
-            <span style="float: right">2025.05 -- 2025.08</span>
-            <div class="tech-stack">
-                Simulation CN-Simulator Foundation / 技术/后端研发实习生
-            </div>
-            <p>
-                需求：设计自动驾驶算法仿真结果的确定性检查系统，验证算法在相同场景下的行为一致性。
-            </p>
-            <ul>
-                <li>
-                    利用 Protobuf 反射实现字段级递归比对消息，结合 Gflags
-                    配置参数；比对结果经 Kafka 发送下游。
-                </li>
-                <li>
-                    使用 TBB
-                    按时间分块并行比对消息流，配合字段过滤与排序策略，整体检查效率提升约
-                    <b>80%</b>。
-                </li>
-                <li>
-                    基于 Airflow 设计自动化工作流，集成 Buildbot 实现 CI 触发，结合 Kafka
-                    与 Hive 构建数据链路。
-                </li>
-            </ul>
-        </div>
+    <h2 class="fade-in">💼 实习项目</h2>
+    <div class="experience-block fade-in">
+      <strong>滴滴 自动驾驶技术团队（voyager） 北京</strong>
+      <span style="float: right">2025.05 -- 2025.08</span>
+      <div class="tech-stack">
+        Simulation CN-Simulator Foundation / 技术/后端研发实习生
+      </div>
+      <p>
+        需求：设计自动驾驶算法仿真结果的确定性检查系统，验证算法在相同场景下的行为一致性。
+      </p>
+      <ul>
+        <li>
+          通过 Protobuf 的反射机制，对复合消息预处理（BFS 排序 repeat 字段、DFS
+          清除特定字段）。
+        </li>
+        <li>
+          使用 TBB
+          按话题和时间分块并行比较，结合序列化哈希值对比法快速检查，效率提升约<b>80%</b>。
+        </li>
+        <li>
+          基于 Airflow 设计自动化工作流，集成 Buildbot 实现 CI 触发，结合 Kafka
+          与 Hive 构建数据链路。
+        </li>
+      </ul>
+    </div>
 
-        <h2 class="fade-in">🧑‍💻 项目经历</h2>
-        <div class="timeline">
-            <div class="project-block fade-in">
-                <strong>ChatroomServer 聊天服务器</strong>
-                <span style="float: right">2025.02 -- 2025.07</span>
-                <div class="tech-stack">
-                    C++, epoll, Kafka, Nginx, SQLite, RESTful API / 个人项目
-                </div>
-                <p>
-                    简介：基于 C++ 实现的多线程高并发多人聊天服务器，设计并对比两种异步 IO
-                    架构：
-                </p>
-                <ul>
-                    <li>
-                        架构一：采用线程池 + 路由分发模型，支持 RESTful API 接口，由 Nginx
-                        实现反向代理与负载均衡。
-                    </li>
-                    <li>
-                        架构二：基于 epoll + 单 Reactor
-                        异步事件驱动模型改进架构一，避免多线程锁竞争和切换开销。
-                    </li>
-                    <li>
-                        集成 Kafka 异步记录用户行为日志；封装线程安全的 DatabaseManager
-                        操作本地 SQLite 存储模块。
-                    </li>
-                    <li>
-                        使用 wrk
-                        工具进行高并发压测，结果表明第二种架构更加稳定，比如最大响应延迟降低约
-                        <b>90%</b>。
-                    </li>
-                </ul>
-            </div>
+    <h2 class="fade-in">🧑‍💻 项目经历</h2>
+    <div class="timeline">
+      <div class="project-block fade-in">
+        <strong>ChatroomServer 聊天服务器</strong>
+        <span style="float: right">2025.02 -- 2025.07</span>
+        <div class="tech-stack">
+          C++, epoll, Kafka, Nginx, SQLite, RESTful API / 个人项目
         </div>
-
-        <h2 class="fade-in">🛠️ 技能清单</h2>
-        <div class="fade-in">
-            <ul>
-                <li>
-                    <b>编程语言：</b>熟悉 C++、Python，具备工程化能力（熟悉
-                    STL、模板、内存管理、并行编程、条件编译）
-                </li>
-                <li>
-                    <b>系统平台：</b>熟悉 Linux，使用过
-                    ROS1/ROS2、Docker、CMake、Bazel、Git 进行跨平台构建与部署
-                </li>
-                <li>
-                    <b>中间件与系统：</b>了解
-                    Kafka、Hive、Redis、MySQL、gRPC、Airflow，具备分布式系统协同开发经验
-                </li>
-            </ul>
-        </div>
-
-        <h2 class="fade-in">🏆 其他</h2>
-        <div class="fade-in">
-            <ul>
-                <li>
-                    <b>获奖情况：</b>中南大学一等学业奖学金（2023、2024）、全国大学生英语竞赛（2024
-                    研究生组三等奖）、华为杯全国大学生数学建模竞赛（2023
-                    研究生组三等奖、2024 研究生组二等奖/队长）。
-                </li>
-                <li>
-                    <b>项目实践：</b>独立开发 Qt 图片阅读器，支持目录浏览与快捷操作；实现并发
-                    HTTP 下载器（基于 TBB、Gflags、Glog、GTest）；构建多无人机 AirSim
-                    状态可视化工具，用于轨迹调试与信息展示。
-                </li>
-                <li>
-                    <b>论文发表：</b>控制方向 SCI 二区论文（IF=3.7），基于重置积分 PI
-                    的多智能体系统一致性控制方法。
-                </li>
-            </ul>
-        </div>
-
-        <h2 class="fade-in">🧭 自我评价</h2>
-        <p class="fade-in">
-            热爱技术，乐于学习，具备良好的团队合作精神与沟通能力。
+        <p>
+          简介：基于 C++ 实现的多线程高并发多人聊天服务器，设计并对比两种异步 IO
+          架构：
         </p>
-    </body>
+        <ul>
+          <li>
+            架构一：线程池 + 路由分发模型，支持 RESTful API，由 Nginx
+            实现反向代理与负载均衡。
+          </li>
+          <li>
+            架构二：采用 epoll + 单 Reactor
+            异步事件驱动模型改进架构一，避免锁竞争和线程切换开销。
+          </li>
+          <li>
+            集成 Kafka 异步记录用户行为日志；封装线程安全的 DatabaseManager 操作
+            SQLite 存储块。
+          </li>
+          <li>
+            使用 wrk
+            进行高并发压测，结果表明第二种架构更加稳定，比如最大响应延迟降低约
+            <b>90%</b>。
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="fade-in">🛠️ 技能清单</h2>
+    <div class="fade-in">
+      <ul>
+        <li>
+          <b>编程语言：</b>熟悉 C++、Python，具备工程化能力（熟悉
+          STL、模板、内存管理、并行编程、条件编译）
+        </li>
+        <li>
+          <b>系统平台：</b>熟悉 Linux，使用过
+          ROS1/ROS2、Docker、CMake、Bazel、Git 进行跨平台构建与部署
+        </li>
+        <li>
+          <b>中间件与系统：</b>了解
+          Kafka、Hive、Redis、MySQL、gRPC、Airflow，具备分布式系统协同开发经验
+        </li>
+      </ul>
+    </div>
+
+    <h2 class="fade-in">🏆 其他</h2>
+    <div class="fade-in">
+      <ul>
+        <li>
+          <b>获奖情况：</b
+          >中南大学一等学业奖学金（2023、2024）、全国大学生英语竞赛（2024
+          研究生组三等奖）、华为杯全国大学生数学建模竞赛（2023
+          研究生组三等奖、2024 研究生组二等奖/队长）。
+        </li>
+        <li>
+          <b>项目实践：</b>独立开发 Qt
+          图片阅读器，支持目录浏览与快捷操作；实现并发 HTTP 下载器（基于
+          TBB、Gflags、Glog、GTest）；构建多无人机 AirSim
+          状态可视化工具，用于轨迹调试与信息展示。
+        </li>
+        <li>
+          <b>论文发表：</b>控制方向 SCI 二区论文（IF=3.7），基于重置积分 PI
+          的多智能体系统一致性控制方法。
+        </li>
+      </ul>
+    </div>
+
+    <h2 class="fade-in">🧭 自我评价</h2>
+    <p class="fade-in">
+      热爱技术，乐于学习，具备良好的团队合作精神与沟通能力。
+    </p>
+  </body>
 </html>
