@@ -1,5 +1,20 @@
 [
   {
+    "file": "posts/gdb.md",
+    "title": "GDB 学习笔记",
+    "date": "2025-08-14T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "GDB",
+      "调试",
+      "开发"
+    ],
+    "summary": "GDB（GNU Debugger）是一个调试工具，允许开发者在程序运行时检查变量、控制执行流程、设置断点等。",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "1分钟"
+  },
+  {
     "file": "posts/刷题笔记.md",
     "title": "刷题笔记",
     "date": "2025-08-11T00:00:00.000Z",
@@ -12,7 +27,7 @@
     "summary": "心醉雕虫巧，忘却大道真。",
     "cover": "",
     "author": "葛蔚",
-    "readingTime": "3分钟"
+    "readingTime": "4分钟"
   },
   {
     "file": "posts/四旋翼无人机控制.md",
@@ -146,7 +161,22 @@
     "summary": "MySQL 是一个开源的关系型数据库管理系统，使用 SQL（结构化查询语言）进行数据操作。",
     "cover": "",
     "author": "葛蔚",
-    "readingTime": "2分钟"
+    "readingTime": "3分钟"
+  },
+  {
+    "file": "posts/音视频.md",
+    "title": "音视频学习笔记",
+    "date": "2025-08-01T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "音视频",
+      "媒体",
+      "开发"
+    ],
+    "summary": "一个完整的音视频文件通常由音频流、视频流以及基础元信息（如时长、分辨率、编码格式等）组成。常见的 mp4、mov、flv、avi、rmvb 等格式属于封装格式（容器格式），它们可以将音频、视频和元信息打包在同一个文件中。封装格式内部的音视频数据一般经过压缩处理，常用的视频编码格式有 H.264、Xv...",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "5分钟"
   },
   {
     "file": "posts/信号与系统.md",
