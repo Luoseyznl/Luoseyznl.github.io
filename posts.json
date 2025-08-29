@@ -1,5 +1,124 @@
 [
   {
+    "file": "posts/CMake.md",
+    "title": "CMake 学习笔记",
+    "date": "2025-08-27T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "CMake",
+      "构建工具",
+      "学习笔记"
+    ],
+    "summary": "CMake 是一个跨平台的开源构建系统，主要用于管理 C/C++ 项目的编译过程。通过编写 CMakeLists.txt 文件，开发者可以定义项目的源文件、依赖库、编译选项等。CMake 会根据这些配置生成适合当前平台和编译器的构建文件（如 Makefile、Visual Studio 工程文件等）...",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "19分钟"
+  },
+  {
+    "file": "posts/FFmpeg.md",
+    "title": "FFmpeg 学习笔记",
+    "date": "2025-08-27T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "编程",
+      "C++",
+      "学习笔记",
+      "FFmpeg"
+    ],
+    "summary": "FFmpeg 是一个开源的多媒体处理工具，支持音视频的录制、转换和流化。提供命令行工具和丰富的库（如 libavcodec、libavformat、libavfilter 等），支持多种协议、格式、编解码器。FFmpeg 不仅能播放和处理本地文件，还能作为流媒体服务器或客户端，实现推流（如 RTMP...",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "5分钟"
+  },
+  {
+    "file": "posts/SDL2.md",
+    "title": "SDL2 学习笔记",
+    "date": "2025-08-27T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "SDL2",
+      "多媒体",
+      "开发"
+    ],
+    "summary": "SDL2（Simple DirectMedia Layer 2）是一个跨平台的多媒体开发库，主要用于简化底层硬件的访问和管理。它为开发者提供了统一的接口，可以方便地操作窗口、图形、音频、输入设备等，广泛应用于游戏开发、模拟器、媒体播放器等领域。",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "7分钟"
+  },
+  {
+    "file": "posts/C嘎嘎.md",
+    "title": "C嘎嘎",
+    "date": "2025-08-24T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "编程",
+      "C++",
+      "学习笔记"
+    ],
+    "summary": "C++ 是一种面向对象的编译型编程语言，结合 CMake, Bazel 等构建工具，可以高效地进行大型项目的开发和管理。其编译过程包括：预处理、编译、汇编三个阶段。预处理阶段处理头文件、宏、条件编译等指令；编译阶段将预处理后的代码转换为汇编代码；汇编阶段将汇编代码转换为机器码；编译完成后进行链接，将...",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "11分钟"
+  },
+  {
+    "file": "posts/OpenGL.md",
+    "title": "OpenGL 学习笔记",
+    "date": "2025-08-24T00:00:00.000Z",
+    "category": "",
+    "tags": [
+      "OpenGL",
+      "计算机图形学"
+    ],
+    "summary": "OpenGL 是一个 跨平台、跨语言的图形 API（Application Programming Interface），主要用于 2D/3D 图形渲染。可以支持 Windows, Linux, macOS 等多个操作系统，由 GPU（图形处理单元）执行图形渲染任务（硬件加速）。OpenGL 只负责...",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "15分钟"
+  },
+  {
+    "file": "posts/Gflag & Gtest & Glog.md",
+    "title": "Gflag & Gtest & Glog 学习笔记",
+    "date": "2025-08-23T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "Gflag",
+      "Gtest",
+      "Glog"
+    ],
+    "summary": "三个 Google 开源的 C++ 库，分别用于命令行参数解析、单元测试和日志记录。",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "10分钟"
+  },
+  {
+    "file": "posts/bazel.md",
+    "title": "Bazel 学习笔记",
+    "date": "2025-08-23T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "Bazel"
+    ],
+    "summary": "Bazel 是 Google 开源的构建工具，支持多语言、多平台的构建和测试。它采用声明式的构建规则，基于依赖关系图进行增量构建，具有高效、可扩展和可重复的特点。Bazel 支持分布式构建和缓存，可以显著提升大型项目的构建速度。",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "7分钟"
+  },
+  {
+    "file": "posts/html & javascript & css & nodejs.md",
+    "title": "HTML & JavaScript & CSS & Node.js 学习笔记",
+    "date": "2025-08-23T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "HTML",
+      "JavaScript",
+      "CSS",
+      "Node.js"
+    ],
+    "summary": "HTML（超文本标记语言）是构建网页的基础，负责网页的结构和内容。JavaScript 是一种脚本语言，用于为网页添加交互和动态效果。CSS（层叠样式表）用于控制网页的外观和布局。Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时，用于构建高性能的网络应用。",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "3分钟"
+  },
+  {
     "file": "posts/gdb.md",
     "title": "GDB 学习笔记",
     "date": "2025-08-14T00:00:00.000Z",
@@ -27,36 +146,7 @@
     "summary": "心醉雕虫巧，忘却大道真。",
     "cover": "",
     "author": "葛蔚",
-    "readingTime": "4分钟"
-  },
-  {
-    "file": "posts/四旋翼无人机控制.md",
-    "title": "四旋翼无人机控制",
-    "date": "2025-08-06T00:00:00.000Z",
-    "category": "渐入佳境",
-    "tags": [
-      "四旋翼",
-      "四元数，级联控制，反步法设计，PID 控制，Lyapunov 稳定性"
-    ],
-    "summary": "四旋翼结构简单、控制灵活，唯一不足可能就是耗电快。本文旨在梳理自己对四旋翼动力学及控制方法的理解。",
-    "cover": "",
-    "author": "葛蔚",
-    "readingTime": "1分钟"
-  },
-  {
-    "file": "posts/实习项目解读.md",
-    "title": "自动驾驶仿真确定性检查代码解读",
-    "date": "2025-08-05T00:00:00.000Z",
-    "category": "项目解读",
-    "tags": [
-      "ROS",
-      "并发编程",
-      "TBB"
-    ],
-    "summary": "确定性检查是自动驾驶仿真中确保输出一致性、仿真可复现性的关键环节。虽然仿真过程中存在大量随机因素（如外部扰动、传感器噪声、端到端算法中的黑盒模型等），但在仿真时只要确保仿真环境的输入一致且执行代码完全相同，输出就应该是确定的。为此，我们需要对仿真过程中的随机因素进行控制、记录和对比，确保排除算法自身...",
-    "cover": "",
-    "author": "葛蔚",
-    "readingTime": "11分钟"
+    "readingTime": "6分钟"
   },
   {
     "file": "posts/Webserver项目解读.md",
@@ -101,7 +191,7 @@
     "summary": "贝尔曼年轻时为了解决阶段性决策问题，提出了动态规划。其核心思想是最优子结构，即一个问题的最优解可以由其子问题的最优解构成。在他晚年时又进一步将其拓展至控制领域，引申出最优控制理论。",
     "cover": "",
     "author": "葛蔚",
-    "readingTime": "11分钟"
+    "readingTime": "12分钟"
   },
   {
     "file": "posts/操作系统.md",
@@ -161,7 +251,22 @@
     "summary": "MySQL 是一个开源的关系型数据库管理系统，使用 SQL（结构化查询语言）进行数据操作。",
     "cover": "",
     "author": "葛蔚",
-    "readingTime": "3分钟"
+    "readingTime": "7分钟"
+  },
+  {
+    "file": "posts/Redis.md",
+    "title": "Redis 学习笔记",
+    "date": "2025-08-01T00:00:00.000Z",
+    "category": "渐入佳境",
+    "tags": [
+      "Redis",
+      "数据库",
+      "NoSQL"
+    ],
+    "summary": "Redis 是一种基于内存的键值对存储系统，支持多种数据结构，如字符串、哈希、列表、集合、有序集合等。读写速度非常快，通常用于缓存、消息队列、实时分析等场景。对数据的操作都是原子性的，执行命令由单线程处理，避免了多线程的锁竞争问题。除此以外 Redis 还支持数据持久化、Lua 脚本，主从复制、哨兵...",
+    "cover": "",
+    "author": "葛蔚",
+    "readingTime": "11分钟"
   },
   {
     "file": "posts/音视频.md",
@@ -173,10 +278,10 @@
       "媒体",
       "开发"
     ],
-    "summary": "一个完整的音视频文件通常由音频流、视频流以及基础元信息（如时长、分辨率、编码格式等）组成。常见的 mp4、mov、flv、avi、rmvb 等格式属于封装格式（容器格式），它们可以将音频、视频和元信息打包在同一个文件中。封装格式内部的音视频数据一般经过压缩处理，常用的视频编码格式有 H.264、Xv...",
+    "summary": "一个完整的音视频文件通常由多个流（如音频流、视频流、字幕流等）和基础元信息组成。常见的封装格式（容器格式）如 mp4、mov、flv、avi、rmvb 等，可以将不同类型的流和元信息打包在同一个文件中。封装格式内部的音视频数据一般经过压缩处理，常用的视频编码格式有 H.264、Xvid 等，音频编码...",
     "cover": "",
     "author": "葛蔚",
-    "readingTime": "5分钟"
+    "readingTime": "15分钟"
   },
   {
     "file": "posts/信号与系统.md",
